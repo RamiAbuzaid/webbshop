@@ -1,8 +1,12 @@
 import React from 'react'
+import ApiProducts from '../components/ApiProducts'
 
 const Products = () => {
   return (
-    <div>Products</div>
+    <>
+      <h1>Products</h1>
+      <ApiProducts />
+    </>
   )
 }
 
