@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 const ManageProducts = () => {
 const [products, setProducts] = useState([]);
@@ -57,8 +58,9 @@ const deleteProduct = async (id) => {
             <td>{product.category}</td>
             <td>{product.price}</td>
             <td>{product.stock}</td>
-            <td><button>Edit</button></td>
+            <td><button href={"/UpdateProduct/" + product['_id']}>Edit</button></td>
             <td><button onClick={() => { deleteProduct(product['_id'])}}>Delete</button></td>
+            
 
             </tr>
 
