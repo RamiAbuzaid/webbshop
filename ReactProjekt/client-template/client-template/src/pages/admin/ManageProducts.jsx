@@ -11,36 +11,62 @@ useEffect(() => {
 
 
 const fetchProducts = async () => {
-  console.log('Hej') 
+  console.log('fetch') 
   try {
     //const response = fetch('/api/products')
     //const response = fetch('')
-    const res = await axios("/api/products");
+    //
+    const res = await axios("http://localhost:3000/products");
     setProducts(res.data);
     console.log(res);
     //const data = await response.json();
     console.log(data)
-  } catch (error) {
-  
-  
+  } catch (error) {}
 }
+
+const deleteProduct = async (id) => {
+  console.log(id) 
+  try {
+    await axios("http://localhost:3000/product/" + id, {
+      method: 'DELETE',
+  });
+ 
+    console.log('Delete');
+  } catch (error) {}
+  fetchProducts();
 }
 
   return (
     <div>
     <div>ManageProducts</div>
 
-    <section>
+    <table>
+
+      <thead>
+        <tr align>Title</tr>
+        <tr>Category</tr>
+        <tr>Price</tr>
+        <tr>Stock</tr>
+      </thead>
+
+      <tbody>
       {
         products.map(product => {
-          return <article key={product['_id']}>
-            <p>{product.title}</p>
+          return <tr key={product['_id']}>
+            <td>{product.title}</td>
+            <td>{product.category}</td>
+            <td>{product.price}</td>
+            <td>{product.stock}</td>
+            <td><button>Edit</button></td>
+            <td><button onClick={() => { deleteProduct(product['_id'])}}>Delete</button></td>
 
-          </article>
+            </tr>
+
+          
         })
       } 
-      
-    </section>
+      </tbody>
+    </table>
     </div>
   )
 }
