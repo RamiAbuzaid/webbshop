@@ -1,6 +1,7 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import { Link } from 'react-router-dom';
+import axios from "axios";
+ import "../../src/App.css" 
 export default function ApiProducts() {
   const [apiData, setApiData] = useState([]);
 
@@ -27,13 +28,15 @@ function ProductList(props) {
 
   return (
     <>
-      <img src={product?.image} alt="fruit image" />
+      <img className="product-image" src={product?.image} alt="fruit image" />
       <pre>{product?.title}</pre>
       <pre>{product?.price}</pre>
       <input defaultValue={product.stock} />
       <button>Add to cart</button>
       <h6>{product?.stock < 1 ? "Not in stock" : "In Stock"}</h6>
-      <h1>Read more</h1>
+      <Link to="/product" state={product}>
+      <h2>Read more</h2>
+      </Link>
     </>
   );
 }
