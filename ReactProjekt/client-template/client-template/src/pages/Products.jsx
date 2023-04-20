@@ -1,10 +1,11 @@
 import React from 'react'
 import ApiProducts from '../components/ApiProducts'
+import "../App.css"
 
 const Products = () => {
   return (
     <>
-      <h1>Products</h1>
+      <h1 className='products-title'>Products</h1>
       <ApiProducts />
     </>
   )
