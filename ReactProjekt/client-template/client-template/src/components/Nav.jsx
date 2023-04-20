@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
+import "././../App";
 
 const navLinks = [
   {
@@ -7,24 +8,26 @@ const navLinks = [
     title: "Products",
     to: "/",
   },
- {
-  id:2,
-  title: "Admin",
-  to:"/admin/manage-products"
- }
+  {
+    id: 2,
+    title: "Admin",
+    to: "/admin/manage-products",
+  },
 ];
 
 const Nav = () => {
   return (
-    <nav>
-      {navLinks.map((nav) => (
-        <ul key={nav.id}>
-          <li>
-            <Link to={nav.to}>{nav.title}</Link>
-          </li>
-        </ul>
-      ))}
-    </nav>
+    <>
+      <nav className="navbar">
+        {navLinks.map((nav) => (
+          <ul className="navlist" key={nav.id}>
+            <li className="lista">
+              <Link to={nav.to}>{nav.title}</Link>
+            </li>
+          </ul>
+        ))}
+      </nav>
+    </>
   );
 };
 
