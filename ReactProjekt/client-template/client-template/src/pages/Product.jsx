@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 
-const Product = (props) => {
+const Product = () => {
   const location = useLocation();
 
   const { category, description, id, image, stock, title } = location.state;
-
-  const { setCartCount, setCartProducts, cartCount, cartProducts } =
-    UseCartState();
 
   return (
     <div className="product">
