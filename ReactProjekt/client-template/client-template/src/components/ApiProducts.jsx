@@ -47,7 +47,6 @@ export default function ApiProducts() {
 function ProductList(props) {
   const {
     product,
-    cartCount,
     setCartCount,
     cartProducts,
     setCartProducts,
@@ -55,11 +54,6 @@ function ProductList(props) {
   } = props;
 
   const addToCartCount = () => setCartCount((prev) => prev + 1);
-
-  useEffect(() => {
-    localStorage.setItem("cart-count", JSON.stringify(cartCount));
-    localStorage.setItem("cart-products", JSON.stringify(cartProducts));
-  });
 
   return (
     <div className="product">

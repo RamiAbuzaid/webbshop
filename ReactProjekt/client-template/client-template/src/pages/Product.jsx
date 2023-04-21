@@ -16,7 +16,6 @@ const Product = () => {
       <pre>{category}</pre>
       <pre>{description}</pre>
       <input defaultValue={stock} />
-      <button>Add to cart</button>
       <h6>{stock < 1 ? "Not in stock" : "In Stock"}</h6>
     </div>
   );
