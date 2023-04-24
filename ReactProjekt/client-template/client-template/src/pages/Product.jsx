@@ -6,6 +6,10 @@ const Product = () => {
 
   const { category, description, id, image, stock, title } = location.state;
 
+  
+
+  console.log(cartProducts, cartCount);
+
   return (
     <div className="product">
       <button>
@@ -16,6 +20,7 @@ const Product = () => {
       <pre>{category}</pre>
       <pre>{description}</pre>
       <input defaultValue={stock} />
+      <button>Add to cart</button>
       <h6>{stock < 1 ? "Not in stock" : "In Stock"}</h6>
     </div>
   );
