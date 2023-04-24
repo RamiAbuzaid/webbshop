@@ -45,7 +45,7 @@
 
 .cart-container {
   position: fixed;
-  right:2em;
+  right: 2em;
   top: 5em;
   border: 1px solid gainsboro;
   background: black;
@@ -76,4 +76,20 @@
 .footer-container {
   position: fixed;
   bottom: 0;
+}
+
+.margin-left {
+  margin-left: 5rem;
+}
+
+.create-product-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 20rem;
+  min-width: 10rem;
+  margin: 0 auto;
+  margin-top: 5rem;
+  background-color: lightgrey;
+  border-radius: 10px;
+  padding: 2rem;
 }
