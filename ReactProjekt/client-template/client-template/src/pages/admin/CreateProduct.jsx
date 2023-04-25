@@ -23,8 +23,8 @@ const CreateProduct = () => {
       category,
     };
     
-    const postData = await axios.post("http://localhost:5001/products", formData);
-  
+    await axios.post("/api/products", formData);
+    
     navigate("/admin/manage-products");
   };
 

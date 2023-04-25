@@ -32,7 +32,6 @@ app.get("/products", async (req, res) => {
 });
 
 app.post("/products", async (req, res) => {
-  console.log(req.body, "reg body");
   try {
     res.json(await Product.create(req.body));
   } catch (error) {
@@ -41,8 +40,18 @@ app.post("/products", async (req, res) => {
 });
 
 app.get("/products/productsId", (req, res) => {
-  console.log(reg.params.productId);
-  res.send("Fetch specific products with ID:" + reg.params.productId);
+  res.send("Fetch specific products with ID:" + req.params.productId);
+});
+
+app.delete("/products/:productId", async (req, res) => {
+  try {
+    console.log(`Deleting: ${req.params?.productId}`);
+    await Product.deleteOne({ _id: req.params?.productId })
+  } catch (e) {
+    res.json(`Something went wrong deleting: ${req.params?.productId}`);
+  } finally {
+    res.json(`Deleted: ${req.params?.productId}`);
+  }
 });
 
 app.listen(port, () => {
