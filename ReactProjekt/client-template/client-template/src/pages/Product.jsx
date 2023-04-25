@@ -4,7 +4,10 @@ import { useLocation } from "react-router-dom";
 const Product = () => {
   const location = useLocation();
 
-  const { category, description, id, image, stock, title } = location.state;
+  const { category, description, image, stock, title } = location.state;
+
+  
+
 
   return (
     <div className="product">
