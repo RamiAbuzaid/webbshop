@@ -7,10 +7,10 @@ import Cart from "./Cart";
 
 export default function ApiProducts() {
   const [apiData, setApiData] = useState([]);
-  const [cartCount, setCartCount] = useState(0);
   const [cartProducts, setCartProducts] = useState([]);
   const [cartVisible, setCartVisible] = useState(false);
-
+  const [cartCount, setCartCount] = useState(0);
+  
   async function getData() {
     const res = await axios("/api/products");
     setApiData(res.data);
@@ -22,7 +22,7 @@ export default function ApiProducts() {
   return (
     <div className="container">
       <div className="cart-icon">
-        <AiOutlineShoppingCart />
+        <AiOutlineShoppingCart onClick={() => setCartVisible(true)} />
         <pre className="cart-counter">{cartCount}</pre>
       </div>
       {cartVisible ? (
@@ -36,8 +36,6 @@ export default function ApiProducts() {
           setCartCount={setCartCount}
           cartProducts={cartProducts}
           setCartProducts={setCartProducts}
-          cartVisible={cartVisible}
-          setCartVisible={setCartVisible}
         />
       ))}
     </div>
@@ -45,21 +43,9 @@ export default function ApiProducts() {
 }
 
 function ProductList(props) {
-  const {
-    product,
-    cartCount,
-    setCartCount,
-    cartProducts,
-    setCartProducts,
-    setCartVisible,
-  } = props;
+  const { product, setCartCount, cartProducts, setCartProducts } = props;
 
   const addToCartCount = () => setCartCount((prev) => prev + 1);
-
-  useEffect(() => {
-    localStorage.setItem("cart-count", JSON.stringify(cartCount));
-    localStorage.setItem("cart-products", JSON.stringify(cartProducts));
-  });
 
   return (
     <div className="product">
@@ -72,7 +58,6 @@ function ProductList(props) {
         <button
           onClick={() => {
             addToCartCount();
-            setCartVisible(true);
             setCartProducts([...cartProducts, product]);
           }}
         >
