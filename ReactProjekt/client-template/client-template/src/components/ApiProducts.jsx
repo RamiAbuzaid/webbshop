@@ -10,9 +10,7 @@ export default function ApiProducts() {
   const [cartProducts, setCartProducts] = useState([]);
   const [cartVisible, setCartVisible] = useState(false);
   const [cartCount, setCartCount] = useState(0);
-
   
-
   async function getData() {
     const res = await axios("/api/products");
     setApiData(res.data);
@@ -20,7 +18,6 @@ export default function ApiProducts() {
   useEffect(() => {
     getData();
   }, []);
-
 
   return (
     <div className="container">

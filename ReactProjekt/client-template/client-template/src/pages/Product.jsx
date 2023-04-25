@@ -5,10 +5,7 @@ const Product = () => {
   const location = useLocation();
 
   const { category, description, image, stock, title } = location.state;
-
   
-
-
   return (
     <div className="product">
       <button>
