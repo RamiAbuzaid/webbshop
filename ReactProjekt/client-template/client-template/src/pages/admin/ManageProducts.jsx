@@ -94,7 +94,15 @@ const ManageProducts = () => {
                     <DeleteIcon />
                   </IconButton>
                   <IconButton aria-label="delete" size="large">
-                    <EditIcon />
+                    <Link
+                      style={{ color: "gray" }}
+                      to={
+                        product ? `/admin/update-product/${product?._id}` : null
+                      }
+                      state={product}
+                    >
+                      <EditIcon />
+                    </Link>
                   </IconButton>
                 </TableCell>
               </TableRow>

@@ -45,12 +45,24 @@ app.get("/products/productsId", (req, res) => {
 
 app.delete("/products/:productId", async (req, res) => {
   try {
-    console.log(`Deleting: ${req.params?.productId}`);
-    await Product.deleteOne({ _id: req.params?.productId })
+    await Product.deleteOne({ _id: req.params?.productId });
   } catch (e) {
     res.json(`Something went wrong deleting: ${req.params?.productId}`);
   } finally {
     res.json(`Deleted: ${req.params?.productId}`);
+  }
+});
+
+app.patch("/products/:productId", async (req, res) => {
+  try {
+    await Product.updateOne({
+      title: req.body?.title,
+      price: req.body?.price,
+      stock: req.body?.stock,
+      description: req.body?.description,
+    });
+  } catch (e) {
+    res.json("Something went wrong updating");
   }
 });
 
